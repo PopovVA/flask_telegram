@@ -1,8 +1,8 @@
 DEBUG = True
 POSTGRES = {
-    'user' : 'vadim',
-    'pw' : '12325846',
-    'db' : 'telegram_flask',
+    'user' : 'your_database_username',
+    'pw' : 'your_database_password',
+    'db' : 'your_database_name',
     'host' : 'localhost',
     'port' : '5432'
 }
