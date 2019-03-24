@@ -1,0 +1,65 @@
+<html>
+
+<head>
+
+   <title>Flask telegram app</title>
+
+   <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+
+</head>
+
+<body>
+
+   {% block body %}
+
+   <div class="container">
+
+      <div class="row">
+
+         <div class="col md-12">
+
+            <h2>Messages list</h2>
+
+            <table class="table table-striped">
+
+               <tr>
+                  <th>id</th>
+                  <th>Username</th>
+                  <th>Message</th>
+                  <th>Action</th>
+               </tr>
+
+               {% for message in Messages %}
+
+               <tr>
+                  <td>{{ message.id }}</td>
+                  <td>{{ message.user.name }}</td>
+                  <td>{{ message.text }}</td>
+                  <td>
+
+                     <a href="/reply/{{message.id}}" class="btn btn-warning btn-xs" data-toggle="modal">Reply</a>
+
+                  </td>
+
+               </tr>
+
+               {% endfor %}
+
+               </tbody>
+
+            </table>
+
+         </div>
+
+      </div>
+
+   </div>
+
+   {% endblock %}
+
+   <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+   <script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+</body>
+
+</html>

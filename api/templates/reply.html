@@ -1,0 +1,42 @@
+<html>
+
+<head>
+
+    <title>Flask telegram app</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+
+</head>
+
+<body>
+
+    {% block body %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col md-12">
+                <form method="POST">
+                    <h1>Sendind a message</h1>
+                    <div class="form-group">
+                        <label>Your reply:</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" class="form-control" name="name" value="">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
+
+    <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+</body>
+
+</html>
