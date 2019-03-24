@@ -51,7 +51,7 @@ POSTGRES = {
 }
 ```
 
-9. Activate a virtual envariment
+9. Activate a virtual environment
 
 ```cd flask_telegram```
 
