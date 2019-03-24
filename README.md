@@ -32,7 +32,7 @@ Pjocets has been created for demonstrate how i can working with Flask and Postgr
 
 ```createdb your_database_name```
 
-7. Setting your user database password
+7. Setting your database user password
 
 ```sudo -u user_name psql db_name```
 
