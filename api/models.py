@@ -17,6 +17,7 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.name
 
+
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(80))

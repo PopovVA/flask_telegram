@@ -3,24 +3,19 @@ from app import app
 from models import Message
 from models import User
 from models import db
+import json
 import requests
 import os
 
-@app.route('/')
-def index(): 
-    Messages = Message.query.all()
-    return render_template('index.html', Messages=Messages)
+@app.route('/api/messages', methods=['GET'])
+def get_messages():
+    messages = getJsonMsgs(Message.query.all())
+    return Response(messages, mimetype='json', status=200)
 
-@app.route('/reply/<int:message_id>', methods=['GET','POST'])
-def reply(message_id): 
-    if request.method == 'POST':
-        text = request.form['name']
-        message = Message.query.filter_by(id=message_id).first()
-        telegram_id = message.user.telegram_id
-        send_to_user(text,telegram_id)
-        return redirect(url_for('index'))
-    message = Message.query.filter_by(id=message_id).first()
-    return render_template('reply.html', message=message)
+@app.route('/api/message/<int:message_id>', methods=['GET'])
+def get_message(message_id): 
+    message = getJsonMsg(Message.query.filter_by(id=message_id).first())
+    return Response(message, mimetype='json', status=200)
 
 
 
@@ -43,7 +38,7 @@ def msg_from_bot():
     
     
     if any(value is None for value in data):
-      return  Response("List of required parameters : name,telegram_id,text", mimetype='text/html', status=400) 
+      return  Response("List of required parameters : name,telegram_id,text", mimetype='json', status=400) 
 
     # Creating user
 
@@ -59,19 +54,43 @@ def msg_from_bot():
 
     return Response(status=200)
 
-  return redirect(url_for('index'))
-    
-def send_to_user(text,telegram_id):
+@app.route('/api/send_to_user', methods=['POST'])  
+def send_to_user():
+    text = request.form.get('text', type=str)
+    telegram_id = request.form.get('telegram_id', type=str)
+
     token = os.getenv("telegram_bot_token")
     url_tmp = 'https://api.telegram.org/bot{}/{}?'
     url = url_tmp.format(token,'sendMessage')
     params = {"chat_id":telegram_id,"text":text}
 
     #any proxy
-    https_proxy = "https://217.69.14.55:3128" 
+    https_proxy = "https://45.250.178.36:8080" 
     proxyDict = {  
               "https" : https_proxy
             }
             
-    response = requests.post(url,params=params, proxies=proxyDict)    
+    response = requests.post(url,params=params, proxies=proxyDict) 
+    return Response(text, mimetype='json', status=200)   
+
+def getJsonMsgs(messages):
+  msgs_list = []
+  for message in messages:
+    msg = {
+      'id': message.id,
+      'text': message.text,
+      'telegram_id': message.user.telegram_id,
+      'username': message.user.name
+    }
+    msgs_list.append(msg)
+  return json.dumps(msgs_list)
+
+def getJsonMsg(message):
+  msg = {
+    'id': message.id,
+    'text': message.text,
+    'telegram_id': message.user.telegram_id,
+    'username': message.user.name
+    }
+  return json.dumps(msg)
 

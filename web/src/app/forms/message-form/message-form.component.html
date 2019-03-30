@@ -1,0 +1,19 @@
+<div class="container">
+<h2>Reply to user</h2>
+<form (submit)="onSubmit()">
+  <div class="form-group">
+    <label for="telegramId">Telegram Id</label>
+    <input type="text" class="form-control" [(ngModel)]="message.telegram_id" name="telegram_id" id="telegram_id">
+  </div>
+  <div class="form-group">
+      <label for="userName">Username</label>
+      <input type="text" class="form-control" [(ngModel)]="message.username" name="userName" id="userName">
+    </div>
+  <div class="form-group">
+    <label for="reply">Your message</label>
+    <input type="text" class="form-control" [(ngModel)]="message.reply" name="reply" id="reply" placeholder="Your message">
+  </div>
+      <button type="submit" class="btn btn-warning">Reply</button>
+      <button [routerLink]="'../'" class="btn btn-light">Back</button>
+</form>
+</div>

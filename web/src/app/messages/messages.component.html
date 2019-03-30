@@ -1,0 +1,20 @@
+<h2>Messages list</h2>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>Message</th>
+        <th>Name</th>
+        <th>Telegram ID</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let message of messages">
+        <td>{{ message.id }}</td>
+        <td>{{ message.text }}</td>
+        <td>{{ message.username }}</td>
+        <td>{{ message.telegram_id }}</td>
+        <td>
+            <a [routerLink]="['/messages', message.id]" class="btn btn-warning" >reply</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
