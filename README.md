@@ -65,5 +65,17 @@ POSTGRES = {
 
 ```python migrate.py db upgrade```
 
-11. Thats all, in the next steps you'll send a message to telegram bot [Telegram_flask_bot](http://t.me/flask_telegram_bot) and after see him text in the main page of project (index.html), you can reply on a user message from web interface, use button 'reply'
+11. Install the npm
+
+```sudo apt install npm```
+
+12. Change directory to 
+
+```cd \web```
+
+13. Start the angular server
+
+```npm start```
+
+14. Thats all, in the next steps you'll send a message to telegram bot [Telegram_flask_bot](http://t.me/flask_telegram_bot) and after see him text in the main page of project (index.html), you can reply on a user message from web interface, use button 'reply'
 
