@@ -59,11 +59,11 @@ POSTGRES = {
 
 10. Now we should make a migration
 
-```python migrate.py db init```
+```python manage.py db init```
 
-```python migrate.py db migrate```
+```python manage.py db migrate```
 
-```python migrate.py db upgrade```
+```python manage.py db upgrade```
 
 11. Install the npm
 
