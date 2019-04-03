@@ -1,6 +1,6 @@
 # Flask_telegram
 
-Pjocet has been created for demonstrate how i can working with Flask and Postgresql
+Project has been created for demonstrate how i can working with Flask and Postgresql
 
 ## How to install
 
