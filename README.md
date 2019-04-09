@@ -1,6 +1,6 @@
 # Flask_telegram
 
-Project has been created for demonstrate how i can working with Flask and Postgresql
+Project was created for demonstrate how i can working with Flask and Postgresql
 
 ## How to install
 
